@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+import java.util.Optional;
+
 @Controller
 public class CoderController {
 
@@ -48,9 +51,9 @@ public class CoderController {
     // (Rather than be treated as a file name)
     @RequestMapping("/getCoders")
     @ResponseBody
-    public String getCoders() {
+    public List<Coder> getCoders() {
 
-        return repository.findAll().toString();
+        return repository.findAll();
 
     }
 
@@ -58,9 +61,9 @@ public class CoderController {
     // (Rather than be treated as a file name)
     @RequestMapping("/coder/{id}")
     @ResponseBody
-    public String coderById(@PathVariable("id") int id) {
+    public Optional<Coder> coderById(@PathVariable("id") int id) {
 
-        return repository.findById(id).toString();
+        return repository.findById(id);
 
     }
 
