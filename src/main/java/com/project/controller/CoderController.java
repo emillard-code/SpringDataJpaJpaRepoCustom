@@ -4,10 +4,7 @@ import com.project.model.Coder;
 import com.project.repository.CoderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -19,7 +16,7 @@ public class CoderController {
     @Autowired
     CoderRepository repository;
 
-    @RequestMapping("/")
+    @GetMapping("/")
     public String home() {
 
         return "main.jsp";
@@ -27,7 +24,7 @@ public class CoderController {
     }
 
     // This endpoint is mainly called by the form in main.jsp.
-    @RequestMapping("/addCoder")
+    @GetMapping("/addCoder")
     public String addProgrammer(Coder coder) {
 
         repository.save(coder);
@@ -36,7 +33,7 @@ public class CoderController {
     }
 
     // This endpoint is mainly called by the form in main.jsp.
-    @RequestMapping("/getCoder")
+    @GetMapping("/getCoder")
     public ModelAndView getCoder(@RequestParam int id) {
 
         ModelAndView mv = new ModelAndView("getCoder.jsp");
@@ -49,7 +46,7 @@ public class CoderController {
 
     // @ResponseBody annotation causes the String to be printed directly as text.
     // (Rather than be treated as a file name)
-    @RequestMapping("/getCoders")
+    @GetMapping("/getCoders")
     @ResponseBody
     public List<Coder> getCoders() {
 
@@ -60,7 +57,7 @@ public class CoderController {
     // @ResponseBody annotation causes the String to be printed directly as text.
     // (Rather than be treated as a file name)
     // produces = "application/xml" ensures that this endpoint can only return xml format.
-    @RequestMapping(path = "/getCodersXML", produces = "application/xml")
+    @GetMapping(path = "/getCodersXML", produces = "application/xml")
     @ResponseBody
     public List<Coder> getCodersXML() {
 
@@ -70,7 +67,7 @@ public class CoderController {
 
     // @ResponseBody annotation causes the String to be printed directly as text.
     // (Rather than be treated as a file name)
-    @RequestMapping("/coder/{id}")
+    @GetMapping("/coder/{id}")
     @ResponseBody
     public Optional<Coder> coderById(@PathVariable("id") int id) {
 
