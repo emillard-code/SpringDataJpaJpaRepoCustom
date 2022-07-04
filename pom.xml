@@ -53,6 +53,7 @@
         <!-- Add this dependency for XML support with Postman. -->
         <!-- It will allow Postman to return XML format responses when the endpoint methods are called. -->
         <!-- Check https://i.imgur.com/s7g5o27.png for how to use Postman in such a manner. -->
+        <!-- The ability to be flexible with the response type is known as content negotiation. -->
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-xml</artifactId>
