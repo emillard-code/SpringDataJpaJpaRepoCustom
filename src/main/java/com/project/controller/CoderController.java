@@ -59,6 +59,17 @@ public class CoderController {
 
     // @ResponseBody annotation causes the String to be printed directly as text.
     // (Rather than be treated as a file name)
+    // produces = "application/xml" ensures that this endpoint can only return xml format.
+    @RequestMapping(path = "/getCodersXML", produces = "application/xml")
+    @ResponseBody
+    public List<Coder> getCodersXML() {
+
+        return repository.findAll();
+
+    }
+
+    // @ResponseBody annotation causes the String to be printed directly as text.
+    // (Rather than be treated as a file name)
     @RequestMapping("/coder/{id}")
     @ResponseBody
     public Optional<Coder> coderById(@PathVariable("id") int id) {
