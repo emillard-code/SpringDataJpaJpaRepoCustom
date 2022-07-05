@@ -44,8 +44,8 @@ public class CoderController {
 
     }
 
-    // @ResponseBody annotation causes the String to be printed directly as text.
-    // (Rather than be treated as a file name)
+    // @ResponseBody annotation causes the object to be returned as Json.
+    // Without it, endpoint would return a 404.
     @GetMapping("/getCoders")
     @ResponseBody
     public List<Coder> getCoders() {
@@ -54,8 +54,8 @@ public class CoderController {
 
     }
 
-    // @ResponseBody annotation causes the String to be printed directly as text.
-    // (Rather than be treated as a file name)
+    // @ResponseBody annotation causes the object to be returned as Json.
+    // Without it, endpoint would return a 404.
     // produces = "application/xml" ensures that this endpoint can only return xml format.
     @GetMapping(path = "/getCodersXML", produces = "application/xml")
     @ResponseBody
@@ -65,8 +65,8 @@ public class CoderController {
 
     }
 
-    // @ResponseBody annotation causes the String to be printed directly as text.
-    // (Rather than be treated as a file name)
+    // @ResponseBody annotation causes the object to be returned as Json.
+    // Without it, endpoint would return a 404.
     @GetMapping("/coder/{id}")
     @ResponseBody
     public Optional<Coder> coderById(@PathVariable("id") int id) {
